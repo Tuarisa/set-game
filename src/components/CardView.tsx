@@ -54,17 +54,20 @@ const Shape = ({ shape, fill, color }: { shape: Card['shape']; fill: Card['fill'
           />
         );
       case 'squiggle':
-        // Classic SET squiggle - wavy worm shape
+        // Classic SET squiggle - horizontal S-wave shape
         return (
           <path
-            d="M 5,20
-               C 5,10 10,8 15,14
-               C 20,20 25,24 30,20
-               C 35,16 40,12 45,18
-               C 48,22 48,28 45,30
-               C 40,34 35,30 30,24
-               C 25,18 20,22 15,28
-               C 10,34 5,30 5,20 Z"
+            d="M 4,24
+               Q 4,14 12,14
+               Q 20,14 22,20
+               Q 24,26 32,26
+               Q 40,26 46,18
+               Q 48,15 46,12
+               Q 44,9 40,12
+               Q 32,18 28,18
+               Q 20,18 18,24
+               Q 16,30 8,30
+               Q 2,30 4,24 Z"
             fill={getFillStyle()}
             stroke={strokeColor}
             strokeWidth="2"
