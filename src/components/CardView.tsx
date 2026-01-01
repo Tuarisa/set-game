@@ -30,12 +30,15 @@ const Shape = ({ shape, fill, color }: { shape: Card['shape']; fill: Card['fill'
   const renderShape = () => {
     switch (shape) {
       case 'oval':
+        // Pill/capsule shape - horizontally elongated
         return (
-          <ellipse
-            cx="25"
-            cy="20"
-            rx="18"
-            ry="15"
+          <rect
+            x="3"
+            y="10"
+            width="44"
+            height="20"
+            rx="10"
+            ry="10"
             fill={getFillStyle()}
             stroke={strokeColor}
             strokeWidth="2"
@@ -44,17 +47,24 @@ const Shape = ({ shape, fill, color }: { shape: Card['shape']; fill: Card['fill'
       case 'diamond':
         return (
           <polygon
-            points="25,5 45,20 25,35 5,20"
+            points="25,4 47,20 25,36 3,20"
             fill={getFillStyle()}
             stroke={strokeColor}
             strokeWidth="2"
           />
         );
       case 'squiggle':
-        // Classic SET squiggle - S-shaped blob
+        // Classic SET squiggle - wavy worm shape
         return (
           <path
-            d="M 8,28 C 8,22 12,18 16,18 C 20,18 22,22 26,22 C 30,22 32,18 36,18 C 40,18 44,22 44,28 C 44,32 40,36 36,36 C 32,36 30,32 26,32 C 22,32 20,36 16,36 C 12,36 8,32 8,28 Z"
+            d="M 5,20
+               C 5,10 10,8 15,14
+               C 20,20 25,24 30,20
+               C 35,16 40,12 45,18
+               C 48,22 48,28 45,30
+               C 40,34 35,30 30,24
+               C 25,18 20,22 15,28
+               C 10,34 5,30 5,20 Z"
             fill={getFillStyle()}
             stroke={strokeColor}
             strokeWidth="2"
