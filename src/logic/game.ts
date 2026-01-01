@@ -4,7 +4,6 @@ import { findAllSets, rankSetsByDifficulty, hasValidSet, isValidSet } from './se
 
 const TABLE_SIZE = 12;
 const POINTS_CORRECT = 10;
-const POINTS_WRONG = 0; // No penalty - kid-friendly
 
 /**
  * Generate a valid starting set for the given difficulty
