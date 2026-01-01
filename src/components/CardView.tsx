@@ -54,23 +54,20 @@ const Shape = ({ shape, fill, color }: { shape: Card['shape']; fill: Card['fill'
           />
         );
       case 'squiggle':
-        // Classic SET squiggle - horizontal S-wave shape
+        // Classic SET squiggle - based on original game shape
         return (
           <path
-            d="M 4,24
-               Q 4,14 12,14
-               Q 20,14 22,20
-               Q 24,26 32,26
-               Q 40,26 46,18
-               Q 48,15 46,12
-               Q 44,9 40,12
-               Q 32,18 28,18
-               Q 20,18 18,24
-               Q 16,30 8,30
-               Q 2,30 4,24 Z"
+            d="M 6,25
+               C 6,15 12,12 18,15
+               C 24,18 26,26 32,26
+               C 38,26 44,20 44,15
+               C 44,10 40,8 36,12
+               C 32,16 30,20 25,20
+               C 20,20 16,14 12,14
+               C 8,14 6,18 6,25 Z"
             fill={getFillStyle()}
             stroke={strokeColor}
-            strokeWidth="2"
+            strokeWidth="2.5"
           />
         );
     }
