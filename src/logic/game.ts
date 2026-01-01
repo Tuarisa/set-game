@@ -104,7 +104,7 @@ export function replenishTable(state: GameState): GameState {
     ...state,
     deck,
     table,
-    message: null,
+    // Preserve success message if present
   };
 }
 
