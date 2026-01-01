@@ -59,23 +59,12 @@ export function isValidSet(cards: Card[]): boolean {
 
 /**
  * Check if a set matches the difficulty requirements
+ * All difficulties accept any valid set - difficulty only affects
+ * which sets are preferred/shown on the table
  */
 export function matchesDifficulty(cards: Card[], difficulty: Difficulty): boolean {
-  if (!isValidSet(cards)) return false;
-
-  const sameCount = countSameAttributes(cards);
-
-  switch (difficulty) {
-    case 'easy':
-      // Must have at least 1 attribute where all 3 are the same
-      return sameCount >= 1;
-    case 'medium':
-      // Any valid set is allowed
-      return true;
-    case 'hard':
-      // Any valid set is allowed, but we prefer those with more "all different"
-      return true;
-  }
+  // All difficulties accept any valid set
+  return isValidSet(cards);
 }
 
 /**

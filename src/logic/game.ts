@@ -1,6 +1,6 @@
 import type { Card, Difficulty, GameState } from './types';
 import { createFullDeck, shuffleDeck, removeCardsByIds } from './deck';
-import { findAllSets, rankSetsByDifficulty, hasValidSet, isValidSet, matchesDifficulty } from './sets';
+import { findAllSets, rankSetsByDifficulty, hasValidSet, isValidSet } from './sets';
 
 const TABLE_SIZE = 12;
 const POINTS_CORRECT = 10;
@@ -139,7 +139,7 @@ export function selectCard(state: GameState, cardId: string): GameState {
   // 3 cards selected - check if it's a valid set
   const selectedCards = state.table.filter(c => newSelectedIds.includes(c.id));
 
-  if (isValidSet(selectedCards) && matchesDifficulty(selectedCards, state.difficulty)) {
+  if (isValidSet(selectedCards)) {
     // Valid set! Remove cards and add points
     const newTable = removeCardsByIds(state.table, newSelectedIds);
     const newState: GameState = {
@@ -157,9 +157,7 @@ export function selectCard(state: GameState, cardId: string): GameState {
       ...state,
       selectedIds: [],
       score: Math.max(0, state.score + POINTS_WRONG),
-      message: isValidSet(selectedCards)
-        ? 'Valid set, but too easy for this difficulty!'
-        : 'Not a valid set! -3 points',
+      message: 'Not a valid SET! -3 points',
     };
   }
 }
