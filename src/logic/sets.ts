@@ -62,7 +62,7 @@ export function isValidSet(cards: Card[]): boolean {
  * All difficulties accept any valid set - difficulty only affects
  * which sets are preferred/shown on the table
  */
-export function matchesDifficulty(cards: Card[], difficulty: Difficulty): boolean {
+export function matchesDifficulty(cards: Card[], _difficulty: Difficulty): boolean {
   // All difficulties accept any valid set
   return isValidSet(cards);
 }
