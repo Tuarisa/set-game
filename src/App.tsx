@@ -24,13 +24,13 @@ function App() {
     setScoreData(getScoreForDifficulty(difficulty));
   }, [difficulty]);
 
-  // Save score when game ends
+  // Save score whenever it changes (update best score in real-time)
   useEffect(() => {
-    if (gameState.gameOver) {
+    if (gameState.score > 0) {
       const updated = updateScore(difficulty, gameState.score);
       setScoreData(updated);
     }
-  }, [gameState.gameOver, gameState.score, difficulty]);
+  }, [gameState.score, difficulty]);
 
   // Clear hint when cards change
   useEffect(() => {
