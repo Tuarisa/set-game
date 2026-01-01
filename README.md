@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# SET Game Trainer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mobile-first browser game trainer for the SET card game variant. Find 4 cards where each attribute (color, shape, fill, count) is either all same or all different across the selected cards.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **4-Card SET variant**: Find sets of 4 cards instead of traditional 3
+- **Three difficulty levels**:
+  - Easy: Sets must have at least 1 matching attribute
+  - Medium: Any valid set
+  - Hard: Prefers sets with more "all different" attributes
+- **Score tracking**: Best and last scores saved per difficulty
+- **Hint system**: Get help finding valid sets
+- **Mobile-first design**: Optimized for phone browsers
+- **Offline-ready**: Works without internet after first load
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript
+- Vite 7
+- TailwindCSS 4
+- Vitest for testing
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Install dependencies
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Start development server
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Run tests
+npm test
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This project is configured for static deployment on Vercel:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+# Deploy the `dist` folder
+```
+
+## Game Rules
+
+1. Each card has 4 attributes:
+   - **Color**: red, green, purple
+   - **Shape**: oval, diamond, squiggle
+   - **Fill**: solid, striped, empty
+   - **Count**: 1, 2, or 3 symbols
+
+2. Select 4 cards that form a valid SET:
+   - For each attribute, all 4 cards must have either:
+     - The **same** value (e.g., all red)
+     - **All different** values (e.g., 1, 2, 3, and... wait, we only have 3 values!)
+   - Actually, with 3 values per attribute and 4 cards, "all different" for 4 unique values isn't possible
+   - So valid SETs have **all same** for each attribute
+
+3. Scoring:
+   - +10 points for correct SET
+   - -3 points for incorrect selection
+
+## Project Structure
+
+```
+src/
+├── components/         # React UI components
+│   ├── CardView.tsx    # Single card rendering
+│   ├── GameBoard.tsx   # Card grid layout
+│   ├── Controls.tsx    # New Game, Hint buttons
+│   ├── DifficultySelector.tsx
+│   ├── ScorePanel.tsx
+│   └── Message.tsx     # Feedback messages
+├── logic/              # Game logic
+│   ├── types.ts        # TypeScript types
+│   ├── deck.ts         # Deck generation
+│   ├── sets.ts         # SET validation
+│   ├── game.ts         # Game state management
+│   └── storage.ts      # localStorage wrapper
+└── App.tsx             # Main app component
 ```
