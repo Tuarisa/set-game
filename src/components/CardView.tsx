@@ -54,17 +54,18 @@ const Shape = ({ shape, fill, color }: { shape: Card['shape']; fill: Card['fill'
           />
         );
       case 'squiggle':
-        // Tilde-like wave shape ~
+        // Tilde-like wave shape ~ with rounded ends
         return (
           <path
             d="M 3,26
                C 8,26 10,32 17,32
                C 24,32 26,20 33,20
                C 40,20 42,26 47,26
-               L 47,14
+               C 50,26 50,14 47,14
                C 42,14 40,8 33,8
                C 26,8 24,20 17,20
                C 10,20 8,14 3,14
+               C 0,14 0,26 3,26
                Z"
             fill={getFillStyle()}
             stroke={strokeColor}
