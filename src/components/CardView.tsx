@@ -51,9 +51,10 @@ const Shape = ({ shape, fill, color }: { shape: Card['shape']; fill: Card['fill'
           />
         );
       case 'squiggle':
+        // Classic SET squiggle - S-shaped blob
         return (
           <path
-            d="M 10,25 C 10,10 20,5 25,10 C 30,15 35,10 40,15 C 45,20 40,30 35,30 C 30,30 25,35 20,30 C 15,25 10,30 10,25 Z"
+            d="M 8,28 C 8,22 12,18 16,18 C 20,18 22,22 26,22 C 30,22 32,18 36,18 C 40,18 44,22 44,28 C 44,32 40,36 36,36 C 32,36 30,32 26,32 C 22,32 20,36 16,36 C 12,36 8,32 8,28 Z"
             fill={getFillStyle()}
             stroke={strokeColor}
             strokeWidth="2"

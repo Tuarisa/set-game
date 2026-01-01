@@ -9,6 +9,7 @@ import {
   ScorePanel,
   Controls,
   Message,
+  SuccessPopup,
 } from './components';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [gameState, setGameState] = useState<GameState>(() => initializeGame(difficulty));
   const [scoreData, setScoreData] = useState<ScoreData>(() => getScoreForDifficulty(difficulty));
   const [hintCards, setHintCards] = useState<string[]>([]);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // Load score data when difficulty changes
   useEffect(() => {
@@ -34,6 +36,13 @@ function App() {
   useEffect(() => {
     setHintCards([]);
   }, [gameState.table]);
+
+  // Show success popup when correct set is found
+  useEffect(() => {
+    if (gameState.message?.includes('Correct')) {
+      setSuccessMessage(gameState.message);
+    }
+  }, [gameState.message]);
 
   const handleNewGame = useCallback(() => {
     setGameState(initializeGame(difficulty));
@@ -67,6 +76,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-gray-100 select-none safe-area-inset">
+      {/* Success Popup */}
+      <SuccessPopup
+        message={successMessage}
+        onClose={() => setSuccessMessage(null)}
+      />
+
       <div className="max-w-lg mx-auto px-4 py-4 sm:py-6 flex flex-col gap-4">
         {/* Header */}
         <header className="text-center">

@@ -4,3 +4,4 @@ export { DifficultySelector } from './DifficultySelector';
 export { ScorePanel } from './ScorePanel';
 export { Controls } from './Controls';
 export { Message } from './Message';
+export { SuccessPopup } from './SuccessPopup';
