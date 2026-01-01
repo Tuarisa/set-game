@@ -124,7 +124,7 @@ export function rankSetsByDifficulty(sets: Card[][], difficulty: Difficulty): Ca
       // Prefer higher scores (more "all different")
       return scoreB - scoreA;
     }
-    // Medium: random order
+    // Medium/Real: random order
     return Math.random() - 0.5;
   });
 }

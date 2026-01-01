@@ -4,7 +4,7 @@ import { findAllSets, rankSetsByDifficulty, hasValidSet, isValidSet } from './se
 
 const TABLE_SIZE = 12;
 const POINTS_CORRECT = 10;
-const POINTS_WRONG = -3;
+const POINTS_WRONG = 0; // No penalty - kid-friendly
 
 /**
  * Generate a valid starting set for the given difficulty
@@ -152,12 +152,11 @@ export function selectCard(state: GameState, cardId: string): GameState {
 
     return replenishTable(newState);
   } else {
-    // Invalid set
+    // Invalid set - no penalty, just try again
     return {
       ...state,
       selectedIds: [],
-      score: Math.max(0, state.score + POINTS_WRONG),
-      message: 'Not a valid SET! -3 points',
+      message: 'Not a SET. Try again!',
     };
   }
 }

@@ -10,6 +10,7 @@ const difficulties: { value: Difficulty; label: string; description: string }[] 
   { value: 'easy', label: 'Easy', description: 'At least 1 matching attribute' },
   { value: 'medium', label: 'Medium', description: 'Any valid set' },
   { value: 'hard', label: 'Hard', description: 'Prefer all-different attributes' },
+  { value: 'real', label: 'Real', description: 'Classic SET - random sets' },
 ];
 
 export function DifficultySelector({ difficulty, onChange, disabled }: DifficultySelectorProps) {

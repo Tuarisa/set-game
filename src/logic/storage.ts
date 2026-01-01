@@ -11,6 +11,7 @@ const defaultScores: ScoresByDifficulty = {
   easy: { ...defaultScoreData },
   medium: { ...defaultScoreData },
   hard: { ...defaultScoreData },
+  real: { ...defaultScoreData },
 };
 
 /**
@@ -28,6 +29,7 @@ export function loadScores(): ScoresByDifficulty {
       easy: { ...defaultScoreData, ...parsed.easy },
       medium: { ...defaultScoreData, ...parsed.medium },
       hard: { ...defaultScoreData, ...parsed.hard },
+      real: { ...defaultScoreData, ...parsed.real },
     };
   } catch {
     return defaultScores;

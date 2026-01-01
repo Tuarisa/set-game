@@ -11,7 +11,7 @@ export interface Card {
   count: Count;
 }
 
-export type Difficulty = 'easy' | 'medium' | 'hard';
+export type Difficulty = 'easy' | 'medium' | 'hard' | 'real';
 
 export interface GameState {
   deck: Card[];
