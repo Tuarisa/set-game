@@ -5,12 +5,12 @@ const ATTRIBUTES: AttributeKey[] = ['color', 'shape', 'fill', 'count'];
 
 /**
  * Check if a single attribute forms a valid set pattern
- * (all same or all different across 4 cards)
+ * (all same or all different across 3 cards)
  */
 function isValidAttribute<T>(values: T[]): boolean {
   const unique = new Set(values);
-  // For 4 cards: all same (1 unique) or all different (4 unique)
-  return unique.size === 1 || unique.size === 4;
+  // For 3 cards: all same (1 unique) or all different (3 unique)
+  return unique.size === 1 || unique.size === 3;
 }
 
 /**
@@ -34,7 +34,7 @@ export function countDifferentAttributes(cards: Card[]): number {
   let count = 0;
   for (const attr of ATTRIBUTES) {
     const values = cards.map(c => c[attr]);
-    if (new Set(values).size === 4) {
+    if (new Set(values).size === 3) {
       count++;
     }
   }
@@ -42,10 +42,10 @@ export function countDifferentAttributes(cards: Card[]): number {
 }
 
 /**
- * Check if 4 cards form a valid SET
+ * Check if 3 cards form a valid SET
  */
 export function isValidSet(cards: Card[]): boolean {
-  if (cards.length !== 4) return false;
+  if (cards.length !== 3) return false;
 
   for (const attr of ATTRIBUTES) {
     const values = cards.map(c => c[attr]);
@@ -67,7 +67,7 @@ export function matchesDifficulty(cards: Card[], difficulty: Difficulty): boolea
 
   switch (difficulty) {
     case 'easy':
-      // Must have at least 1 attribute where all 4 are the same
+      // Must have at least 1 attribute where all 3 are the same
       return sameCount >= 1;
     case 'medium':
       // Any valid set is allowed
@@ -88,19 +88,17 @@ export function getDifficultyScore(cards: Card[]): number {
 }
 
 /**
- * Find all valid 4-card sets among the given cards
+ * Find all valid 3-card sets among the given cards
  */
 export function findAllSets(cards: Card[]): Card[][] {
   const sets: Card[][] = [];
 
-  for (let i = 0; i < cards.length - 3; i++) {
-    for (let j = i + 1; j < cards.length - 2; j++) {
-      for (let k = j + 1; k < cards.length - 1; k++) {
-        for (let l = k + 1; l < cards.length; l++) {
-          const combo = [cards[i], cards[j], cards[k], cards[l]];
-          if (isValidSet(combo)) {
-            sets.push(combo);
-          }
+  for (let i = 0; i < cards.length - 2; i++) {
+    for (let j = i + 1; j < cards.length - 1; j++) {
+      for (let k = j + 1; k < cards.length; k++) {
+        const combo = [cards[i], cards[j], cards[k]];
+        if (isValidSet(combo)) {
+          sets.push(combo);
         }
       }
     }

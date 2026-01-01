@@ -1,10 +1,10 @@
 # SET Game Trainer
 
-A mobile-first browser game trainer for the SET card game variant. Find 4 cards where each attribute (color, shape, fill, count) is either all same or all different across the selected cards.
+A mobile-first browser game trainer for the classic SET card game. Find 3 cards where each attribute (color, shape, fill, count) is either all same or all different across the selected cards.
 
 ## Features
 
-- **4-Card SET variant**: Find sets of 4 cards instead of traditional 3
+- **Classic SET rules**: Find sets of 3 cards
 - **Three difficulty levels**:
   - Easy: Sets must have at least 1 matching attribute
   - Medium: Any valid set
@@ -57,12 +57,10 @@ npm run build
    - **Fill**: solid, striped, empty
    - **Count**: 1, 2, or 3 symbols
 
-2. Select 4 cards that form a valid SET:
-   - For each attribute, all 4 cards must have either:
+2. Select 3 cards that form a valid SET:
+   - For each attribute, all 3 cards must have either:
      - The **same** value (e.g., all red)
-     - **All different** values (e.g., 1, 2, 3, and... wait, we only have 3 values!)
-   - Actually, with 3 values per attribute and 4 cards, "all different" for 4 unique values isn't possible
-   - So valid SETs have **all same** for each attribute
+     - **All different** values (e.g., red, green, purple)
 
 3. Scoring:
    - +10 points for correct SET

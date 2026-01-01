@@ -74,7 +74,7 @@ function App() {
             SET Trainer
           </h1>
           <p className="text-sm text-gray-500 mt-1">
-            Find 4 cards where each attribute is all same or all different
+            Find 3 cards where each attribute is all same or all different
           </p>
         </header>
 
@@ -119,7 +119,7 @@ function App() {
         {/* Selection count */}
         {!gameState.gameOver && gameState.selectedIds.length > 0 && (
           <div className="text-center text-sm text-gray-500">
-            {gameState.selectedIds.length}/4 cards selected
+            {gameState.selectedIds.length}/3 cards selected
           </div>
         )}
       </div>

@@ -10,7 +10,7 @@ const POINTS_WRONG = -3;
  * Generate a valid starting set for the given difficulty
  */
 function generateValidSet(deck: Card[], difficulty: Difficulty): Card[] | null {
-  // Find all possible 4-card combinations that form valid sets
+  // Find all possible 3-card combinations that form valid sets
   const allSets = findAllSets(deck);
   const rankedSets = rankSetsByDifficulty(allSets, difficulty);
 
@@ -37,9 +37,9 @@ export function initializeGame(difficulty: Difficulty): GameState {
   const setIds = guaranteedSet.map(c => c.id);
   deck = removeCardsByIds(deck, setIds);
 
-  // Take remaining cards to fill the table (TABLE_SIZE - 4)
-  const remainingTableCards = deck.slice(0, TABLE_SIZE - 4);
-  deck = deck.slice(TABLE_SIZE - 4);
+  // Take remaining cards to fill the table (TABLE_SIZE - 3)
+  const remainingTableCards = deck.slice(0, TABLE_SIZE - 3);
+  deck = deck.slice(TABLE_SIZE - 3);
 
   // Combine guaranteed set with remaining cards and shuffle
   const table = shuffleDeck([...guaranteedSet, ...remainingTableCards]);
@@ -127,8 +127,8 @@ export function selectCard(state: GameState, cardId: string): GameState {
 
   const newSelectedIds = [...selectedIds, cardId];
 
-  // If less than 4 cards selected, just update selection
-  if (newSelectedIds.length < 4) {
+  // If less than 3 cards selected, just update selection
+  if (newSelectedIds.length < 3) {
     return {
       ...state,
       selectedIds: newSelectedIds,
@@ -136,7 +136,7 @@ export function selectCard(state: GameState, cardId: string): GameState {
     };
   }
 
-  // 4 cards selected - check if it's a valid set
+  // 3 cards selected - check if it's a valid set
   const selectedCards = state.table.filter(c => newSelectedIds.includes(c.id));
 
   if (isValidSet(selectedCards) && matchesDifficulty(selectedCards, state.difficulty)) {
