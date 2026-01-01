@@ -98,8 +98,8 @@ export function CardView({ card, isSelected, onClick }: CardViewProps) {
         transition-all duration-200 ease-out
         active:scale-95
         ${isSelected
-          ? 'ring-4 ring-purple-500 ring-offset-2 shadow-lg scale-105'
-          : 'hover:shadow-lg hover:scale-[1.02]'
+          ? 'ring-4 ring-purple-500 ring-offset-2 shadow-lg scale-105 z-10'
+          : 'hover:shadow-lg hover:scale-[1.02] z-0'
         }
         w-full aspect-[3/4] min-h-[100px]
         cursor-pointer
